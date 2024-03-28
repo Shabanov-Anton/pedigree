@@ -1,31 +1,46 @@
 <template>
   <section class="navbar">
-    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: 'HOME' }">
+    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: $routes.HOME }">
       <SimpleButton class="navigation-panel__link" type="info">Главная</SimpleButton>
     </RouterLink>
 
-    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: 'PERSON_LIST' }">
+    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: $routes.PERSON_LIST }">
       <SimpleButton class="navigation-panel__link" type="warning">Список</SimpleButton>
     </RouterLink>
 
-    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: 'CREATE_PERSON' }">
-      <SimpleButton class="navigation-panel__link" type="primary">Добавить</SimpleButton>
+    <div v-if="currentRole === 'admin'">
+      <RouterLink class="navigation-panel__link__wrapper" :to="{ name: $routes.CREATE_PERSON }">
+        <SimpleButton class="navigation-panel__link" type="primary">Добавить</SimpleButton>
+      </RouterLink>
+    </div>
+
+    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: $routes.SETTINGS }">
+      <SimpleButton class="navigation-panel__link" type="info">Настройки</SimpleButton>
     </RouterLink>
 
-    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: 'SETTINGS' }">
-      <SimpleButton class="navigation-panel__link" type="info">Настройки</SimpleButton>
+    <RouterLink class="navigation-panel__link__wrapper" :to="{ name: 'FEEDBACK' }">
+      <SimpleButton class="navigation-panel__link" type="info">Обратная связь</SimpleButton>
     </RouterLink>
   </section>
 </template>
 
 <script>
 import SimpleButton from "./SimpleButton.vue"
+import { mapGetters } from "vuex"
 
 export default {
   name: 'HeaderComponent',
   components: {
     SimpleButton,
   },
+  computed: {
+    ...mapGetters('settings', [
+      'getMode'
+    ]),
+    currentRole () {
+      return this.getMode
+    }
+  }
 }
 </script>
 

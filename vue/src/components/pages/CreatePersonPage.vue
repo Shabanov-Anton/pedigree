@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import PageLayout from '../parts/PageLayout.vue'
 import PersonForm from '../forms/PersonForm.vue'
 import { emptyPerson } from '@/services/person'
@@ -39,6 +39,11 @@ export default {
       form: emptyPerson()
     }
   },
+  computed: {
+    ...mapGetters('settings', [
+      'getMode'
+    ])
+  },
   methods: {
     ...mapActions('persons', [
       'addPerson'
@@ -46,7 +51,7 @@ export default {
     createPerson () {
       this.addPerson(this.form)
         .then((person) => {
-          this.$router.push({ name: 'PERSON', params: { id: person.id } })
+          this.$router.push({ name: this.$routes.PERSON, params: { id: person.id } })
         })
     },
     cancel () {
@@ -54,6 +59,11 @@ export default {
     },
     goBack () {
       this.$router.go(-1)
+    }
+  },
+  mounted () {
+    if (this.getMode === 'user') {
+      this.$router.push({ name: this.$routes.HOME })
     }
   }
 }
