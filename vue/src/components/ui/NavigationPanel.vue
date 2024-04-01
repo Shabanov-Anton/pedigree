@@ -1,64 +1,37 @@
 <template>
-  <div v-if="currentRole === 'admin'">
-    <div class="navigation-panel">
-      <span class="navigation-panel__link__wrapper">
-        <SimpleButton
-          class="navigation-panel__link"
-          :class="{ 'disabled': buttonDisabled }"
-          :disabled="buttonDisabled"
-          @click="() => saveId()"
-        >
-          Запомнить
-        </SimpleButton>
-      </span>
-
-      <span class="navigation-panel__link__wrapper">
-        <SimpleButton
-          class="navigation-panel__link"
-          type="danger"
-          @click="() => deletePersonInButton()"
-        >
-          Удалить
-        </SimpleButton>
-      </span>
-
-      <RouterLink
-        class="navigation-panel__link__wrapper"
-        :to="{ name: $routes.EDIT_PERSON, params: { id: $route.params.id } }"
+  <div v-if="currentRole === 'admin'" class="navigation-panel">
+    <span class="navigation-panel__link__wrapper">
+      <SimpleButton
+        class="navigation-panel__link"
+        :class="{ 'disabled': buttonDisabled }"
+        :disabled="buttonDisabled"
+        @click="() => saveId()"
       >
-        <SimpleButton
-          class="navigation-panel__link"
-          type="warning"
-        >
-          Редактировать
-        </SimpleButton>
-      </RouterLink>
-    </div>
-    <div class="navigation-panel">
-      <RouterLink
-        class="navigation-panel__link__wrapper"
-        :to="{ name: $routes.CREATE_PARENT, params: { childId: $route.params.id } }"
-      >
-        <SimpleButton
-          class="navigation-panel__link"
-          type="info"
-        >
-          Добавить родителя
-        </SimpleButton>
-      </RouterLink>
+        Запомнить
+      </SimpleButton>
+    </span>
 
-      <RouterLink
-        class="navigation-panel__link__wrapper"
-        :to="{ name: $routes.CREATE_CHILD, params: { parentId: $route.params.id } }"
+    <span class="navigation-panel__link__wrapper">
+      <SimpleButton
+        class="navigation-panel__link"
+        type="danger"
+        @click="() => deletePersonInButton()"
       >
-        <SimpleButton
-          class="navigation-panel__link"
-          type="info"
-        >
-          Добавить ребенка
-        </SimpleButton>
-      </RouterLink>
-    </div>
+        Удалить
+      </SimpleButton>
+    </span>
+
+    <RouterLink
+      class="navigation-panel__link__wrapper"
+      :to="{ name: $routes.EDIT_PERSON, params: { id: $route.params.id } }"
+    >
+      <SimpleButton
+        class="navigation-panel__link"
+        type="warning"
+      >
+        Редактировать
+      </SimpleButton>
+    </RouterLink>
   </div>
 </template>
 

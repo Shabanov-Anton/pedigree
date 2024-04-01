@@ -53,16 +53,6 @@ const routes = [
     path: '/service',
     name: RouteNames.SERVICE,
     component: ServicePage
-  },
-  {
-    path: '/person/:parentId/create',
-    name: RouteNames.CREATE_CHILD,
-    component: CreatePersonPage
-  },
-  {
-    path: '/person/:childId/create',
-    name: RouteNames.CREATE_PARENT,
-    component: CreatePersonPage
   }
 ]
 

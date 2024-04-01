@@ -59,21 +59,11 @@ export default {
     },
     goBack () {
       this.$router.go(-1)
-    },
-    parentId () {
-      return this.$route.params.parentId
-    },
-    childId () {
-      return this.$route.params.childId
     }
   },
   mounted () {
     if (this.getMode === 'user') {
       this.$router.push({ name: this.$routes.HOME })
-    } else {
-      if (this.childId()) {
-        console.log('actions') //Что-то здесь?
-      }
     }
   }
 }
