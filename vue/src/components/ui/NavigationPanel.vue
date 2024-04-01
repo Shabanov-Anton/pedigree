@@ -72,8 +72,8 @@ export default {
   },
   computed: {
     ...mapGetters('persons', [
-      'getPersonById',
-      'getCenter'
+      'getCenter',
+      'getPersonById'
     ]),
     ...mapGetters('settings', [
       'getMode'
@@ -105,20 +105,20 @@ export default {
         cancelButtonText: 'Отмена',
         type: 'warning'
       })
-        .then(() => this.deletePerson(this.id))
-        .then(() => {
-          this.$message({
-            type: 'success',
-            message: 'Удаление выполнено'
-          })
-          this.$router.push({ name: this.$routes.HOME });
+      .then(() => this.deletePerson(this.id))
+      .then(() => {
+        this.$message({
+          type: 'success',
+          message: 'Удаление выполнено'
         })
-        .catch(() => {
-          this.$message({
-            type: 'info',
-            message: 'Удаление отменено'
-          })
+        this.$router.push({ name: this.$routes.HOME });
+      })
+      .catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Удаление отменено'
         })
+      })
     }
   }
 }
