@@ -96,7 +96,7 @@
     <div class="custom-form__full-width">
       <h2>Дети</h2>
       <div
-        v-for="(child, index) in value.children"
+        v-for="(child, index) in personsChildren"
         :key="'child' + index"
       >
         <div class="person-page__header-wrapper">
@@ -254,7 +254,7 @@ export default {
       'getAllPersons',
       'getPersonById',
       'getCenter',
-      'getPersonByIds'
+      'getPersonsByIds'
     ]),
     secondName: {
       get () {
