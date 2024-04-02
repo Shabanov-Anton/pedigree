@@ -151,7 +151,7 @@ export default {
       if (!this.person.children) {
         return []
       }
-      return this.getPersonsByIds(this.person.children.map(i => i.child)).filter((person) => {
+      return this.getPersonsByIds(this.person.children).filter((person) => {
         return !person.removed
       });
     },

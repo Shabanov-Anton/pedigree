@@ -37,7 +37,7 @@
     <div class="navigation-panel">
       <RouterLink
         class="navigation-panel__link__wrapper"
-        :to="{ name: $routes.CREATE_PARENT, params: { childId: $route.params.id } }"
+        :to="{ name: $routes.CREATE_PERSON, query: { childId: $route.params.id } }"
       >
         <SimpleButton
           class="navigation-panel__link"
@@ -49,7 +49,7 @@
 
       <RouterLink
         class="navigation-panel__link__wrapper"
-        :to="{ name: $routes.CREATE_CHILD, params: { parentId: $route.params.id } }"
+        :to="{ name: $routes.CREATE_PERSON, query: { parentId: $route.params.id } }"
       >
         <SimpleButton
           class="navigation-panel__link"

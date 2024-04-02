@@ -194,7 +194,7 @@
     <h2>Дети</h2>
     <div 
       class="custom-form__full-width" 
-      v-for="(child, index) in value.children" 
+      v-for="(child, index) in personsChildren" 
       :key="'child' + index"
     >
       <div class ="person-page__header-wrapper">
@@ -324,7 +324,7 @@ export default {
     },
     access: {
       get(){
-        return this.value.access.toString()
+        return this.value.access !== null ? this.value.access.toString() : "";
       },
       set(value){
         this.emitFormData({
@@ -334,7 +334,7 @@ export default {
     },
     removed: {
       get(){
-        return this.value.removed.toString()
+        return this.value.removed !== null ? this.value.access.toString() : "";
       },
       set(value){
         this.emitFormData({
@@ -347,7 +347,8 @@ export default {
       'filteredPersons',
       'getAllPersons',
       'getPersonById',
-      'getCenter'
+      'getCenter',
+      'getPersonsByIds'
     ]),
     id () {
       return this.$route.params.id
@@ -382,6 +383,9 @@ export default {
         )
       }
       return this.filteredPersons(customFilter) || []
+    },
+    personsChildren () {
+      return this.getPersonsByIds(this.value.children)
     },
     birthPickerOptions () {
       return {
