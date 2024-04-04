@@ -467,9 +467,6 @@ export default {
       }
       return this.filteredPersons(customFilter) || []
     },
-    personsChildren () {
-      return this.getPersonsByIds(this.value.children)
-    },
     birthPickerOptions () {
       return {
         disabledDate: time => {
