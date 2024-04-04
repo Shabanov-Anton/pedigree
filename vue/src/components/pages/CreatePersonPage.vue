@@ -42,11 +42,21 @@ export default {
   computed: {
     ...mapGetters('settings', [
       'getMode'
-    ])
+    ]),
+    ...mapGetters('persons', [
+      'getPersonById'
+    ]),
+    childId () {
+      return this.$route.query.childId
+    },
+    parentId () {
+      return this.$route.query.parentId
+    }
   },
   methods: {
     ...mapActions('persons', [
-      'addPerson'
+      'addPerson',
+      'editPerson'
     ]),
     createPerson() {
       const isEmpty = this.$refs.personForm.checkEmptyForms();
@@ -57,7 +67,7 @@ export default {
       this.addPerson(this.form).then((person) => {
         if(parentId) {
             const parent = this.getPersonById(parentId)
-            parent.children.push(person.id)
+            parent.children.push({child: person.id})
             this.editPerson(parent)
           }
         this.$router.push({ name: "PERSON", params: { id: person.id } });
@@ -70,6 +80,11 @@ export default {
       this.$router.go(-1)
     }
   },
+  created () {
+    if (this.childId) {
+      this.form.children.push({child: this.childId})
+    }
+  }, 
   mounted () {
     if (this.getMode === 'user') {
       this.$router.push({ name: this.$routes.HOME })
