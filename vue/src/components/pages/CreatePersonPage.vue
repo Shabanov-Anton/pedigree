@@ -63,6 +63,7 @@ export default {
       if (!isEmpty) {
         return;
       }
+      const parentId = this.parentId
       this.addPerson(this.form).then((person) => {
         if(parentId) {
             const parent = this.getPersonById(parentId)
