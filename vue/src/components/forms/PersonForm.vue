@@ -496,11 +496,11 @@ export default {
       })
     },
     checkEmptyForms() {
-      const militaryForm = this.$refs.militaryForm ?? [];
-      const educationForm = this.$refs.educationForm ?? [];
-      const childForm = this.$refs.childForm ?? [];
-      const weddingForm = this.$refs.weddingForm ?? [];
-      const workForm = this.$refs.workForm ?? [];
+      const militaryForm = this.$refs.militaryForm || [];
+      const educationForm = this.$refs.educationForm || [];
+      const childForm = this.$refs.childForm || [];
+      const weddingForm = this.$refs.weddingForm || [];
+      const workForm = this.$refs.workForm || [];
       const forms = [
         ...militaryForm,
         ...educationForm,

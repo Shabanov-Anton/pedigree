@@ -16,7 +16,7 @@ const initialState = [
     biography: '',
     activity: '',
     photo: require('@/assets/logo.png'),
-    children: [{'child':'2'}],
+    children: [{child:'2'}],
     educations: [],
     weddings: [],
     works: [],

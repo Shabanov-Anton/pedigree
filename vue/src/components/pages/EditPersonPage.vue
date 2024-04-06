@@ -73,7 +73,6 @@ export default {
     ]),
     editPersonHandler () {
       const isEmptyH = this.$refs.personForm.checkEmptyForms();
-      console.log(isEmptyH)
       if (isEmptyH) {
         return
       }
