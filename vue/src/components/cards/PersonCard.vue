@@ -186,8 +186,8 @@ export default {
       return this.getAvailablePersons.filter((person) => {
         return person.children && person.children.some((child) => {
           return child.child === this.person.id 
-        });
-      });
+        })
+      })
     },
     genderClass () {
       const gender = this.person.gender || ''
