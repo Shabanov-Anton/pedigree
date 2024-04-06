@@ -60,7 +60,7 @@ export default {
     ]),
     createPerson() {
       const isEmpty = this.$refs.personForm.checkEmptyForms();
-      if (!isEmpty) {
+      if (isEmpty) {
         return;
       }
       const parentId = this.parentId

@@ -182,10 +182,12 @@ export default {
       }
       return defaultImage
     },
-    parents () {
+    parents() {
       return this.getAvailablePersons.filter((person) => {
-        return person.children && person.children.includes(this.person.id)
-      })
+        return person.children && person.children.some((child) => {
+          return child.child === this.person.id 
+        });
+      });
     },
     genderClass () {
       const gender = this.person.gender || ''
